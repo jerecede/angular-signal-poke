@@ -1,0 +1,53 @@
+<!-- <div [ngClass]="sonoFelice ? 'felice' : 'triste'"> -->
+<div [ngClass]="currentClasses">esprimo le mie emozioni con i colori</div>
+<button (click)="changeMood()">cambia umore</button>
+<!-- <div [ngStyle]="{'font-size': sonoFelice ? '50px' : '10px'}">sono molto stiloso!</div> -->
+<div [ngStyle]="currentStyles">sono molto stiloso!</div>
+
+<p *ngFor="let element of elements; let i = index">
+    {{i}}, {{element}}
+</p>
+
+@for(element of elements; track element){
+    <p>{{element}}</p>
+}
+
+<img *ngIf="isImage" src="https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fc76edf35-7c25-42d6-87d4-044af5097bf0.jpeg">
+@if(!isImage){
+    <img src="https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F65730214-bbcc-4b05-b755-7aa7d86782c7.jpeg">
+}
+<br>
+<button (click)="hideImage()">nascondi immagine</button>
+
+<p *ngIf="imTrue">sono vero</p>
+<p *ngIf="!imTrue">sono falso</p>
+
+@if(imTrue){
+    <p>chiocciola sono vero</p>
+} @else {
+    <p>chiocciola sono falso</p>
+}
+
+<div *ngIf="imTrue; else alternative_content">
+    <p>sono verissimo</p>
+</div>
+<ng-template #alternative_content>
+    <p>sono falsissimo</p>
+</ng-template>
+
+<div *ngIf="imTrue then correct_content; else alternative_content">
+</div>
+<ng-template #correct_content>
+    <p>sono verissimo</p>
+</ng-template>
+<ng-template #alternative_content>
+    <p>sono falsissimo</p>
+</ng-template>
+
+<div [ngSwitch]="tripleChoice">
+    <p *ngSwitchCase="0">scelta 0</p>
+    <p *ngSwitchCase="1">scelta 1</p>
+    <p *ngSwitchDeafault="">scelta 2</p>
+</div>
+
+<button (click)="changeIfElse()">cambia if else</button>
